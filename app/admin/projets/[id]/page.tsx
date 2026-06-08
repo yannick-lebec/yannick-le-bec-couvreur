@@ -8,10 +8,8 @@ import UploadZone from '@/components/admin/UploadZone'
 const CATEGORIES = [
   'Pose toiture',
   'Rénovation',
-  'Étanchéité',
   'Charpente',
   'Zinguerie',
-  'Urgence',
 ]
 
 type FormState = {
