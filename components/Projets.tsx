@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
+import Lightbox from './Lightbox'
 
 type Projet = {
   id: number
@@ -17,6 +18,7 @@ type Projet = {
 export default function Projets() {
   const [projets, setProjets] = useState<Projet[]>([])
   const [loading, setLoading] = useState(true)
+  const [selected, setSelected] = useState<Projet | null>(null)
   const { ref, isVisible } = useIntersectionObserver()
 
   useEffect(() => {
@@ -68,7 +70,10 @@ export default function Projets() {
                 }`}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div
+                  className="relative aspect-4/3 overflow-hidden cursor-pointer"
+                  onClick={() => setSelected(p)}
+                >
                   <Image
                     src={p.photoUrl}
                     alt={p.titre}
@@ -76,12 +81,16 @@ export default function Projets() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Red overlay */}
-                  <div className="absolute inset-0 bg-rouge/0 group-hover:bg-rouge/80 transition-all duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-rouge/0 group-hover:bg-rouge/70 transition-all duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-6">
-                      <div className="font-bebas text-white text-2xl tracking-widest mb-2">
-                        {p.titre}
+                      <div className="w-12 h-12 border-2 border-white rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
                       </div>
-                      <div className="text-white/90 text-sm">{p.description}</div>
+                      <div className="font-bebas text-white text-xl tracking-widest">
+                        Agrandir
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -102,6 +111,14 @@ export default function Projets() {
           </div>
         )}
       </div>
+
+      {selected && (
+        <Lightbox
+          src={selected.photoUrl}
+          alt={selected.titre}
+          onClose={() => setSelected(null)}
+        />
+      )}
     </section>
   )
 }
