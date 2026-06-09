@@ -64,15 +64,16 @@ export default function APropos() {
         {/* Text */}
         <div className="grid md:grid-cols-2 gap-10 mb-16">
           <p className="text-gray-600 text-base leading-relaxed">
-            Couvreur indépendant depuis 25 ans, j&apos;ai travaillé sur des centaines de
-            chantiers en Île-de-France — résidentiel, commercial, patrimoine classé.
-            Mon savoir-faire couvre la pose, la rénovation et l&apos;entretien de tous
-            types de toitures.
+            Couvreur indépendant depuis 25 ans, j&apos;ai débuté ma carrière en
+            apprentissage aux Compagnons du Devoir où j&apos;ai obtenu mon BEP Technique
+            du Toit. J&apos;ai ensuite créé ma propre entreprise Couverture Pro pendant
+            4 ans, avant de devenir chef d&apos;équipe chez Art-Toit pour le reste de
+            ma carrière.
           </p>
           <p className="text-gray-600 text-base leading-relaxed">
-            Disponible en sous-traitance ou en renfort d&apos;équipe, je m&apos;adapte à vos
-            contraintes de planning et de budget. Carte BTP, assurance décennale,
-            matériel personnel — je suis opérationnel dès demain.
+            Aujourd&apos;hui je propose ma main-d&apos;œuvre au TJM de 350 €* pour une
+            journée de 7 heures. Je me déplace principalement dans l&apos;Essonne (91),
+            avec des exceptions possibles selon le projet.
           </p>
         </div>
 
@@ -92,6 +93,13 @@ export default function APropos() {
             </div>
           ))}
         </div>
+
+        {/* Asterisk note */}
+        <p className="text-texte-secondaire text-xs italic mt-8 leading-relaxed">
+          *TJM de base calculé sur 7h de travail effectif, départ depuis Marolles-en-Hurepoix (91).
+          Toute heure supplémentaire est facturée en sus. Tarif susceptible d&apos;être revu selon
+          la distance, la durée et la difficulté du chantier.
+        </p>
       </div>
     </section>
   )

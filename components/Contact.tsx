@@ -101,7 +101,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-xs text-texte-secondaire uppercase tracking-widest mb-0.5">Zone</div>
-                  <div className="text-noir text-sm">Essonne (91) · Île-de-France</div>
+                  <div className="text-noir text-sm">Essonne (91)</div>
                 </div>
               </div>
             </div>
@@ -130,15 +130,14 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">
-                      Entreprise *
+                      Entreprise
                     </label>
                     <input
                       name="entreprise"
                       value={form.entreprise}
                       onChange={handleChange}
-                      required
                       className="w-full border border-gris-moyen px-4 py-3 text-sm focus:outline-none focus:border-rouge transition-colors"
-                      placeholder="Nom de votre société"
+                      placeholder="Nom de votre société ou particulier (facultatif)"
                     />
                   </div>
                   <div>

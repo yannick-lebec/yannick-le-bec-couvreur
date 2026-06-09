@@ -12,7 +12,7 @@ type Projet = {
   description: string
   categorie: string
   date: string
-  photoUrl: string
+  photos: { id: number; url: string; ordre: number }[]
 }
 
 export default function AdminPage() {

@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+type Photo = { id: number; url: string; ordre: number }
 type Projet = {
   id: number
   titre: string
@@ -10,7 +11,7 @@ type Projet = {
   description: string
   categorie: string
   date: string
-  photoUrl: string
+  photos: Photo[]
 }
 
 export default function ProjetCard({
@@ -21,6 +22,7 @@ export default function ProjetCard({
   onDeleted: () => void
 }) {
   const router = useRouter()
+  const mainPhoto = projet.photos[0]?.url
 
   const handleDelete = async () => {
     if (!confirm(`Supprimer "${projet.titre}" ?`)) return
@@ -30,13 +32,19 @@ export default function ProjetCard({
 
   return (
     <div className="bg-white border border-gris-moyen overflow-hidden">
-      <div className="relative aspect-[4/3] bg-gris-clair">
-        <Image
-          src={projet.photoUrl}
-          alt={projet.titre}
-          fill
-          className="object-cover"
-        />
+      <div className="relative aspect-4/3 bg-gris-clair">
+        {mainPhoto ? (
+          <Image src={mainPhoto} alt={projet.titre} fill className="object-cover" />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-texte-secondaire text-xs">
+            Aucune photo
+          </div>
+        )}
+        {projet.photos.length > 1 && (
+          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+            {projet.photos.length} photos
+          </div>
+        )}
       </div>
       <div className="p-4">
         <div className="flex justify-between items-start gap-2 mb-1">

@@ -22,8 +22,7 @@ export default function Hero() {
           {/* Paragraph */}
           <p className="animate-fade-in-up-3 text-gray-600 text-base sm:text-lg leading-relaxed mb-8 max-w-md">
             Artisan couvreur indépendant disponible pour vos chantiers en
-            Île-de-France. Sérieux, autonome et réactif — je m&apos;intègre
-            immédiatement dans vos équipes.
+            Île-de-France. Sérieux, autonome et réactif.
           </p>
 
           {/* Buttons */}

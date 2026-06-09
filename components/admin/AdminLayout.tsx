@@ -25,18 +25,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </span>
             </div>
             <div className="flex items-center gap-4">
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-xs transition-colors"
-              >
-                Voir le site →
+              <a href="/admin" className="text-gray-400 hover:text-white text-xs transition-colors">
+                Projets
               </a>
-              <button
-                onClick={handleLogout}
-                className="text-gray-400 hover:text-rouge text-xs transition-colors"
-              >
+              <a href="/admin/avis" className="text-gray-400 hover:text-white text-xs transition-colors">
+                Avis
+              </a>
+              <a href="/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-xs transition-colors">
+                Site →
+              </a>
+              <button onClick={handleLogout} className="text-gray-400 hover:text-rouge text-xs transition-colors">
                 Déconnexion
               </button>
             </div>

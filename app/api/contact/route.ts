@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   const { entreprise, nom, email, telephone, typeMission, description } =
     await request.json()
 
-  if (!entreprise || !nom || !email || !typeMission || !description) {
+  if (!nom || !email || !typeMission || !description) {
     return NextResponse.json({ error: 'Champs manquants' }, { status: 400 })
   }
 
