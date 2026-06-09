@@ -92,10 +92,10 @@ export default function Lightbox({
 
       {/* Image */}
       <div
-        className="relative max-w-5xl w-full max-h-[85vh] px-14 sm:px-20"
+        className="relative max-w-5xl w-full max-h-[92vh] px-10 sm:px-20"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full h-[70vh]">
+        <div className="relative w-full h-[82vh] sm:h-[72vh]">
           <Image
             key={current}
             src={images[current]}
@@ -112,7 +112,7 @@ export default function Lightbox({
             {title && <p className="text-white font-semibold text-sm">{title}</p>}
             {lieu && <p className="text-white/60 text-xs mt-0.5">{lieu}</p>}
             {description && (
-              <p className="text-white/50 text-xs mt-1 max-w-xl mx-auto">{description}</p>
+              <p className="hidden sm:block text-white/50 text-xs mt-1 max-w-xl mx-auto">{description}</p>
             )}
           </div>
         )}
