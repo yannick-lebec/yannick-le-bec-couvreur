@@ -64,7 +64,7 @@ export default function APropos() {
         {/* Text */}
         <div className="grid md:grid-cols-2 gap-10 mb-16">
           <p className="text-gray-600 text-base leading-relaxed">
-            Couvreur indépendant depuis 25 ans, j&apos;ai débuté ma carrière en
+            Couvreur depuis 25 ans, j&apos;ai débuté ma carrière en
             apprentissage aux Compagnons du Devoir où j&apos;ai obtenu mon BEP Technique
             du Toit. J&apos;ai ensuite créé ma propre entreprise Couverture Pro pendant
             4 ans, avant de devenir chef d&apos;équipe chez Art-Toit pour le reste de
