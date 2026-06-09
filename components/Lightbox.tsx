@@ -21,12 +21,11 @@ export default function Lightbox({
   onClose,
 }: Props) {
   const [current, setCurrent] = useState(initialIndex)
+  const [zoomed, setZoomed] = useState(false)
   const touchStartX = useRef<number | null>(null)
 
-  const prev = useCallback(() =>
-    setCurrent((i) => (i === 0 ? images.length - 1 : i - 1)), [images.length])
-  const next = useCallback(() =>
-    setCurrent((i) => (i === images.length - 1 ? 0 : i + 1)), [images.length])
+  const prev = useCallback(() => { setZoomed(false); setCurrent((i) => (i === 0 ? images.length - 1 : i - 1)) }, [images.length])
+  const next = useCallback(() => { setZoomed(false); setCurrent((i) => (i === images.length - 1 ? 0 : i + 1)) }, [images.length])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -92,23 +91,28 @@ export default function Lightbox({
 
       {/* Image */}
       <div
-        className="relative max-w-5xl w-full max-h-[92vh] px-10 sm:px-20"
+        className="relative w-full flex flex-col items-center justify-center px-10 sm:px-20"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full h-[82vh] sm:h-[72vh]">
+        <div
+          className={`overflow-hidden transition-transform duration-300 ${zoomed ? 'cursor-zoom-out' : 'cursor-zoom-in sm:cursor-zoom-in'}`}
+          onDoubleClick={() => setZoomed((z) => !z)}
+          title="Double-clic pour zoomer"
+        >
           <Image
             key={current}
             src={images[current]}
             alt={title ?? `Photo ${current + 1}`}
-            fill
-            className="object-contain"
+            width={1600}
+            height={1200}
+            className={`max-w-full max-h-[82vh] w-auto h-auto object-contain transition-transform duration-300 ${zoomed ? 'scale-150' : 'scale-100'}`}
             priority
           />
         </div>
 
         {/* Caption */}
-        {(title || lieu || description) && (
-          <div className="mt-3 text-center">
+        {(title || lieu) && (
+          <div className="mt-2 text-center">
             {title && <p className="text-white font-semibold text-sm">{title}</p>}
             {lieu && <p className="text-white/60 text-xs mt-0.5">{lieu}</p>}
             {description && (
