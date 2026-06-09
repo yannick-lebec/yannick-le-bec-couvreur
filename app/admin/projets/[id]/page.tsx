@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import AdminLayout from '@/components/admin/AdminLayout'
 import UploadZone from '@/components/admin/UploadZone'
 
-const CATEGORIES = ['Pose toiture', 'Rénovation', 'Charpente', 'Zinguerie', 'Isolation', 'Traitement']
+const CATEGORIES = ['Pose toiture', 'Rénovation', 'Charpente', 'Zinguerie']
 
 type FormState = {
   titre: string; lieu: string; description: string; categorie: string; date: string

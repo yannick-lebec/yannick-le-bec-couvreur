@@ -42,24 +42,6 @@ const services = [
       </svg>
     ),
   },
-  {
-    titre: 'Isolation (laine de verre)',
-    desc: 'Dépose et pose de laine de verre sur demande. Prestation disponible selon la nature du chantier.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-      </svg>
-    ),
-  },
-  {
-    titre: 'Traitement de toiture',
-    desc: 'Nettoyage, hydrofugation et traitement anti-mousse. Disponible sur demande selon le chantier.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 22a7 7 0 007-7c0-2.389-1.176-4.5-3-5.772M12 22a7 7 0 01-7-7c0-2.389 1.176-4.5 3-5.772M12 22V12m0 0L8 8m4 4l4-4" />
-      </svg>
-    ),
-  },
 ]
 
 export default function Services() {
@@ -100,12 +82,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Note */}
-        <p className="text-texte-secondaire text-xs italic mt-10 text-center max-w-3xl mx-auto leading-relaxed">
-          Je maîtrise l&apos;ensemble des techniques de couverture. Certaines prestations comme le
-          traitement de toiture ou l&apos;isolation laine de verre sont réalisées sur demande selon
-          la nature du chantier — n&apos;hésitez pas à m&apos;en parler lors de votre prise de contact.
-        </p>
       </div>
     </section>
   )

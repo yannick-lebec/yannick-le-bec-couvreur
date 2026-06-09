@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import AdminLayout from '@/components/admin/AdminLayout'
 import UploadZone from '@/components/admin/UploadZone'
 
-const CATEGORIES = ['Pose toiture', 'Rénovation', 'Charpente', 'Zinguerie', 'Isolation', 'Traitement']
+const CATEGORIES = ['Pose toiture', 'Rénovation', 'Charpente', 'Zinguerie']
 
 export default function NouveauProjet() {
   const router = useRouter()
