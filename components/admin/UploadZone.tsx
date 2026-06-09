@@ -127,7 +127,7 @@ export default function UploadZone({
               <div className="text-sm text-center">
                 <span className="text-rouge font-medium">Cliquez</span> ou glissez des photos
               </div>
-              <div className="text-xs">{value.length}/{MAX_PHOTOS} · JPG, PNG, WEBP</div>
+              <div className="text-xs text-center">{value.length}/{MAX_PHOTOS} · Sélectionnez plusieurs photos à la fois (Ctrl+clic)</div>
             </>
           )}
         </div>
@@ -140,7 +140,12 @@ export default function UploadZone({
         accept="image/*"
         multiple
         className="hidden"
-        onChange={(e) => e.target.files && handleFiles(Array.from(e.target.files))}
+        onChange={(e) => {
+          if (e.target.files && e.target.files.length > 0) {
+            handleFiles(Array.from(e.target.files))
+            e.target.value = ''
+          }
+        }}
       />
     </div>
   )
