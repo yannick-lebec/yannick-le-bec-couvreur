@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col md:flex-row pt-16">
@@ -67,15 +69,13 @@ export default function Hero() {
 
       {/* Right — black */}
       <div className="flex-[2] bg-noir relative flex items-center justify-center min-h-[50vh] md:min-h-0 overflow-hidden">
-        {/* Placeholder photo */}
-        <div className="w-full h-full absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="font-bebas text-6xl text-white/10 tracking-widest">YLB</div>
-            <div className="text-gray-600 text-sm tracking-widest mt-2 uppercase">
-              Photo à venir
-            </div>
-          </div>
-        </div>
+        <Image
+          src="/Photo-Avatar-Yannick.png"
+          alt="Yannick Le Bec, couvreur"
+          fill
+          className="object-cover object-center"
+          priority
+        />
 
         {/* Red vertical stripe */}
         <div className="absolute right-0 top-0 bottom-0 w-2 bg-rouge" />
