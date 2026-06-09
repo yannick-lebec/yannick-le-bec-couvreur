@@ -4,8 +4,8 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col md:flex-row pt-16">
       {/* Left — white */}
-      <div className="flex-[3] bg-white flex items-center px-8 sm:px-12 lg:px-20 py-16">
-        <div className="max-w-lg">
+      <div className="flex-[3] bg-white flex items-center justify-end py-16 px-8 sm:px-12">
+        <div className="w-full max-w-lg lg:pr-16">
           {/* Badge */}
           <div className="animate-fade-in-up-1 inline-flex items-center gap-2 bg-gris-clair border border-gris-moyen px-4 py-2 mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
