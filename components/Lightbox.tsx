@@ -21,11 +21,18 @@ export default function Lightbox({
   onClose,
 }: Props) {
   const [current, setCurrent] = useState(initialIndex)
-  const [zoomed, setZoomed] = useState(false)
+  const [scale, setScale] = useState(1)
+  const [origin, setOrigin] = useState('50% 50%')
+  const imageWrapRef = useRef<HTMLDivElement>(null)
   const touchStartX = useRef<number | null>(null)
 
-  const prev = useCallback(() => { setZoomed(false); setCurrent((i) => (i === 0 ? images.length - 1 : i - 1)) }, [images.length])
-  const next = useCallback(() => { setZoomed(false); setCurrent((i) => (i === images.length - 1 ? 0 : i + 1)) }, [images.length])
+  const resetZoom = useCallback(() => {
+    setScale(1)
+    setOrigin('50% 50%')
+  }, [])
+
+  const prev = useCallback(() => { resetZoom(); setCurrent((i) => (i === 0 ? images.length - 1 : i - 1)) }, [images.length, resetZoom])
+  const next = useCallback(() => { resetZoom(); setCurrent((i) => (i === images.length - 1 ? 0 : i + 1)) }, [images.length, resetZoom])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -41,11 +48,28 @@ export default function Lightbox({
     }
   }, [onClose, prev, next])
 
+  // Wheel zoom — centré sur la position du curseur
+  useEffect(() => {
+    const el = imageWrapRef.current
+    if (!el) return
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      const rect = el.getBoundingClientRect()
+      const x = ((e.clientX - rect.left) / rect.width) * 100
+      const y = ((e.clientY - rect.top) / rect.height) * 100
+      setOrigin(`${x}% ${y}%`)
+      setScale((prev) => Math.min(4, Math.max(1, prev - e.deltaY * 0.003)))
+    }
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
+
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (scale > 1) return
     touchStartX.current = e.touches[0].clientX
   }
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return
+    if (scale > 1 || touchStartX.current === null) return
     const diff = touchStartX.current - e.changedTouches[0].clientX
     if (Math.abs(diff) > 50) diff > 0 ? next() : prev()
     touchStartX.current = null
@@ -53,8 +77,8 @@ export default function Lightbox({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center animate-fade-in-up-1"
-      onClick={onClose}
+      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+      onClick={scale > 1 ? resetZoom : onClose}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -77,7 +101,7 @@ export default function Lightbox({
       )}
 
       {/* Prev */}
-      {images.length > 1 && (
+      {images.length > 1 && scale === 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); prev() }}
           className="absolute left-3 sm:left-6 text-white/70 hover:text-white transition-colors p-2 z-10"
@@ -91,13 +115,13 @@ export default function Lightbox({
 
       {/* Image */}
       <div
+        ref={imageWrapRef}
         className="relative w-full flex flex-col items-center justify-center px-10 sm:px-20"
         onClick={(e) => e.stopPropagation()}
       >
         <div
-          className={`overflow-hidden transition-transform duration-300 ${zoomed ? 'cursor-zoom-out' : 'cursor-zoom-in sm:cursor-zoom-in'}`}
-          onDoubleClick={() => setZoomed((z) => !z)}
-          title="Double-clic pour zoomer"
+          className={scale > 1 ? 'cursor-zoom-out' : 'cursor-zoom-in'}
+          style={{ overflow: 'hidden' }}
         >
           <Image
             key={current}
@@ -105,13 +129,18 @@ export default function Lightbox({
             alt={title ?? `Photo ${current + 1}`}
             width={1600}
             height={1200}
-            className={`max-w-full max-h-[82vh] w-auto h-auto object-contain transition-transform duration-300 ${zoomed ? 'scale-150' : 'scale-100'}`}
+            className="max-w-full max-h-[82vh] w-auto h-auto object-contain"
+            style={{
+              transform: `scale(${scale})`,
+              transformOrigin: origin,
+              transition: scale === 1 ? 'transform 0.3s ease' : 'none',
+            }}
             priority
           />
         </div>
 
         {/* Caption */}
-        {(title || lieu) && (
+        {(title || lieu) && scale === 1 && (
           <div className="mt-2 text-center">
             {title && <p className="text-white font-semibold text-sm">{title}</p>}
             {lieu && <p className="text-white/60 text-xs mt-0.5">{lieu}</p>}
@@ -120,10 +149,17 @@ export default function Lightbox({
             )}
           </div>
         )}
+
+        {/* Hint zoom */}
+        {scale === 1 && (
+          <p className="hidden sm:block absolute bottom-2 right-4 text-white/30 text-xs">
+            Molette pour zoomer
+          </p>
+        )}
       </div>
 
       {/* Next */}
-      {images.length > 1 && (
+      {images.length > 1 && scale === 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); next() }}
           className="absolute right-3 sm:right-6 text-white/70 hover:text-white transition-colors p-2 z-10"
@@ -136,7 +172,7 @@ export default function Lightbox({
       )}
 
       {/* Thumbnail dots */}
-      {images.length > 1 && (
+      {images.length > 1 && scale === 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
           {images.map((_, i) => (
             <button
