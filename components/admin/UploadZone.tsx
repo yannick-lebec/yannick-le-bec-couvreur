@@ -5,12 +5,27 @@ import Image from 'next/image'
 
 const MAX_PHOTOS = 10
 
+async function readExifDate(file: File): Promise<string | null> {
+  try {
+    const exifr = (await import('exifr')).default
+    const exif = await exifr.parse(file, ['DateTimeOriginal', 'CreateDate'])
+    const date: Date | undefined = exif?.DateTimeOriginal ?? exif?.CreateDate
+    if (!date) return null
+    const formatted = date.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1)
+  } catch {
+    return null
+  }
+}
+
 export default function UploadZone({
   value,
   onChange,
+  onDateDetected,
 }: {
   value: string[]
   onChange: (urls: string[]) => void
+  onDateDetected?: (date: string) => void
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [uploading, setUploading] = useState(false)
@@ -34,6 +49,13 @@ export default function UploadZone({
       setError(`Maximum ${MAX_PHOTOS} photos par projet`)
     }
     if (toUpload.length === 0) return
+
+    // Lire la date EXIF de la première photo si aucune photo n'existe déjà
+    if (onDateDetected && value.length === 0 && toUpload[0]) {
+      const date = await readExifDate(toUpload[0])
+      if (date) onDateDetected(date)
+    }
+
     setUploading(true)
     let current = [...value]
     try {

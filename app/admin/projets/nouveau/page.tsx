@@ -49,7 +49,11 @@ export default function NouveauProjet() {
         <form onSubmit={handleSubmit} className="bg-white p-8 space-y-6">
           <div>
             <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">Photos *</label>
-            <UploadZone value={photos} onChange={setPhotos} />
+            <UploadZone
+              value={photos}
+              onChange={setPhotos}
+              onDateDetected={(date) => setForm((prev) => prev.date ? prev : { ...prev, date })}
+            />
           </div>
 
           <div>
