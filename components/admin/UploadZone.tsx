@@ -5,6 +5,31 @@ import Image from 'next/image'
 
 const MAX_PHOTOS = 10
 
+async function compressImage(file: File): Promise<File> {
+  const MAX_PX = 1920
+  const QUALITY = 0.85
+  return new Promise((resolve) => {
+    const img = new window.Image()
+    const url = URL.createObjectURL(file)
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      let { width, height } = img
+      if (width <= MAX_PX && height <= MAX_PX) { resolve(file); return }
+      if (width > height) { height = Math.round(height * MAX_PX / width); width = MAX_PX }
+      else { width = Math.round(width * MAX_PX / height); height = MAX_PX }
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      canvas.getContext('2d')!.drawImage(img, 0, 0, width, height)
+      canvas.toBlob((blob) => {
+        resolve(blob ? new File([blob], file.name, { type: 'image/jpeg' }) : file)
+      }, 'image/jpeg', QUALITY)
+    }
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
+    img.src = url
+  })
+}
+
 async function readExifDate(file: File): Promise<string | null> {
   try {
     const exifr = (await import('exifr')).default
@@ -32,8 +57,9 @@ export default function UploadZone({
   const [error, setError] = useState('')
 
   const uploadFile = async (file: File): Promise<string> => {
+    const compressed = await compressImage(file)
     const fd = new FormData()
-    fd.append('file', file)
+    fd.append('file', compressed)
     const res = await fetch('/api/upload', { method: 'POST', body: fd })
     const data = await res.json()
     if (!res.ok) throw new Error(data.error)
