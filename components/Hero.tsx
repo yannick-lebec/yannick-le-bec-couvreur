@@ -23,8 +23,8 @@ export default function Hero() {
 
           {/* Paragraph */}
           <p className="animate-fade-in-up-3 text-gray-600 text-base sm:text-lg leading-relaxed mb-8 max-w-md">
-            Artisan couvreur indépendant disponible pour vos chantiers en
-            Essonne (91). Sérieux, autonome et réactif.
+            Artisan couvreur en Essonne (91) — pose, rénovation, entretien,
+            démoussage. Devis gratuit, intervention rapide.
           </p>
 
           {/* Buttons */}
@@ -33,13 +33,13 @@ export default function Hero() {
               href="#contact"
               className="bg-rouge text-white font-semibold px-8 py-3 text-center hover:bg-rouge/90 hover:scale-105 transition-all duration-200"
             >
-              Me contacter
+              Demander un devis gratuit
             </a>
             <a
               href="#projets"
               className="border-2 border-noir text-noir font-semibold px-8 py-3 text-center hover:bg-noir hover:text-white transition-all duration-200"
             >
-              Voir mes projets
+              Voir mes réalisations
             </a>
           </div>
 

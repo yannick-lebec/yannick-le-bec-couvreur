@@ -21,7 +21,7 @@ Site vitrine couvreur indépendant Essonne (91). En production sur Vercel.
 
 | Fichier | Rôle |
 |---|---|
-| `lib/schema.ts` | Schéma Drizzle (table `projets`, id serial) |
+| `lib/schema.ts` | Schéma Drizzle (tables `projets`, `avis` — `avis` a `ville` mais pas `entreprise`/`poste`) |
 | `lib/db.ts` | Client Drizzle Neon |
 | `lib/storage.ts` | Upload/delete Vercel Blob |
 | `lib/auth.ts` | Helpers session (async cookies) |
@@ -29,10 +29,14 @@ Site vitrine couvreur indépendant Essonne (91). En production sur Vercel.
 | `next.config.ts` | `remotePatterns` Vercel Blob autorisé |
 | `components/Lightbox.tsx` | Modal plein écran pour les photos |
 
-## Services proposés (4 seulement)
+## Cible et positionnement
 
-Pose toiture · Rénovation · Charpente · Zinguerie  
-*(Étanchéité et Urgences supprimés à la demande)*
+Site orienté **particuliers uniquement** (pas de B2B, pas de sous-traitance).  
+**Aucun tarif affiché** sur le site.
+
+## Services proposés (6)
+
+Pose toiture · Rénovation · Charpente · Zinguerie · Entretien de toiture · Démoussage
 
 ## Reste à faire
 

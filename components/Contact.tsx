@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 type FormState = {
-  entreprise: string
   nom: string
   email: string
   telephone: string
@@ -13,17 +12,17 @@ type FormState = {
 }
 
 const TYPES = [
-  'Renfort équipe ponctuel',
-  'Chantier complet en sous-traitance',
-  'Mission longue durée',
-  'Urgence / dépannage',
+  'Devis pose neuve',
+  'Rénovation de toiture',
+  'Entretien / démoussage',
+  'Fuite / urgence',
+  'Zinguerie (gouttières…)',
   'Autre',
 ]
 
 export default function Contact() {
   const { ref, isVisible } = useIntersectionObserver()
   const [form, setForm] = useState<FormState>({
-    entreprise: '',
     nom: '',
     email: '',
     telephone: '',
@@ -49,7 +48,7 @@ export default function Contact() {
       })
       if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ entreprise: '', nom: '', email: '', telephone: '', typeMission: '', description: '' })
+      setForm({ nom: '', email: '', telephone: '', typeMission: '', description: '' })
     } catch {
       setStatus('error')
     }
@@ -72,9 +71,9 @@ export default function Contact() {
             <div className="w-16 h-1 bg-rouge mb-8" />
 
             <p className="text-gray-600 text-base leading-relaxed mb-10">
-              Vous cherchez un couvreur qualifié pour renforcer vos équipes ou
-              sous-traiter un chantier en Île-de-France ? Contactez-moi via ce
-              formulaire, je vous réponds sous 24h.
+              Un projet de toiture, une fuite, un entretien à prévoir ?
+              Décrivez votre besoin, je vous réponds sous 24h et me déplace
+              pour un devis gratuit.
             </p>
 
             <div className="space-y-6">
@@ -141,32 +140,18 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="bg-white p-8 space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">
-                      Entreprise
-                    </label>
-                    <input
-                      name="entreprise"
-                      value={form.entreprise}
-                      onChange={handleChange}
-                      className="w-full border border-gris-moyen px-4 py-3 text-sm focus:outline-none focus:border-rouge transition-colors"
-                      placeholder="Nom de votre société ou particulier (facultatif)"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">
-                      Votre nom *
-                    </label>
-                    <input
-                      name="nom"
-                      value={form.nom}
-                      onChange={handleChange}
-                      required
-                      className="w-full border border-gris-moyen px-4 py-3 text-sm focus:outline-none focus:border-rouge transition-colors"
-                      placeholder="Prénom Nom"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">
+                    Votre nom *
+                  </label>
+                  <input
+                    name="nom"
+                    value={form.nom}
+                    onChange={handleChange}
+                    required
+                    className="w-full border border-gris-moyen px-4 py-3 text-sm focus:outline-none focus:border-rouge transition-colors"
+                    placeholder="Prénom Nom"
+                  />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
@@ -181,7 +166,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full border border-gris-moyen px-4 py-3 text-sm focus:outline-none focus:border-rouge transition-colors"
-                      placeholder="contact@entreprise.fr"
+                      placeholder="votre@email.fr"
                     />
                   </div>
                   <div>

@@ -4,26 +4,17 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 const points = [
   {
-    titre: 'Autonomie',
-    desc: 'Intervention immédiate sans encadrement constant. Je gère mon travail de A à Z.',
+    titre: 'Devis gratuit',
+    desc: 'Je me déplace pour évaluer vos travaux et vous remettre un devis clair, sans engagement.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
     ),
   },
   {
-    titre: 'Respect des délais',
-    desc: 'Ponctualité et fiabilité sur chaque chantier. Vos plannings sont respectés.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
-  {
-    titre: 'Sécurité',
-    desc: 'Équipements aux normes et procédures de sécurité rigoureuses sur tous les toits.',
+    titre: 'Assuré décennal',
+    desc: 'Assurance décennale en cours de validité. Vos travaux sont couverts 10 ans après réception.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -31,8 +22,17 @@ const points = [
     ),
   },
   {
+    titre: 'Travail soigné',
+    desc: 'Finitions propres, matériaux de qualité, chantier nettoyé en fin de journée.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+      </svg>
+    ),
+  },
+  {
     titre: 'Essonne (91)',
-    desc: 'Basé en Essonne (91), mobile en Essonne selon vos besoins.',
+    desc: 'Basé à Marolles-en-Hurepoix, j\'interviens dans tout le département.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -64,16 +64,15 @@ export default function APropos() {
         {/* Text */}
         <div className="grid md:grid-cols-2 gap-10 mb-16">
           <p className="text-gray-600 text-base leading-relaxed">
-            Couvreur depuis 25 ans, j&apos;ai débuté ma carrière en
-            apprentissage aux Compagnons du Devoir où j&apos;ai obtenu mon BEP Technique
-            du Toit. J&apos;ai ensuite créé ma propre entreprise Couverture Pro pendant
-            4 ans, avant de devenir chef d&apos;équipe chez Art-Toit pour le reste de
-            ma carrière.
+            Couvreur depuis 25 ans, formé aux Compagnons du Devoir, j&apos;ai
+            consacré toute ma carrière à la toiture. BEP Technique du Toit,
+            expérience en pose, rénovation, charpente et zinguerie sur tous
+            types de bâtiments.
           </p>
           <p className="text-gray-600 text-base leading-relaxed">
-            Aujourd&apos;hui je propose ma main-d&apos;œuvre au TJM de 350 €* pour une
-            journée de 7 heures. Je me déplace principalement dans l&apos;Essonne (91),
-            avec des exceptions possibles selon le projet.
+            Aujourd&apos;hui artisan indépendant, j&apos;interviens directement
+            chez les particuliers en Essonne (91). Un seul interlocuteur du
+            devis à la réception des travaux.
           </p>
         </div>
 
@@ -94,12 +93,6 @@ export default function APropos() {
           ))}
         </div>
 
-        {/* Asterisk note */}
-        <p className="text-texte-secondaire text-xs italic mt-8 leading-relaxed">
-          *TJM de base calculé sur 7h de travail effectif, départ depuis Marolles-en-Hurepoix (91).
-          Toute heure supplémentaire est facturée en sus. Tarif susceptible d&apos;être revu selon
-          la distance, la durée et la difficulté du chantier.
-        </p>
       </div>
     </section>
   )

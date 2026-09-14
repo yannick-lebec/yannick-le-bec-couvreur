@@ -19,7 +19,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const { nom, entreprise, poste, note, commentaire } = await request.json()
+  const { nom, ville, note, commentaire } = await request.json()
 
   if (!nom || !note || !commentaire) {
     return NextResponse.json({ error: 'Champs manquants' }, { status: 400 })
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
   const [created] = await db
     .insert(avis)
-    .values({ nom, entreprise, poste, note, commentaire })
+    .values({ nom, ville, note, commentaire })
     .returning()
 
   try {
@@ -41,8 +41,7 @@ export async function POST(request: NextRequest) {
       html: `
         <h2>Nouvel avis à valider</h2>
         <p><strong>Nom :</strong> ${nom}</p>
-        ${entreprise ? `<p><strong>Entreprise :</strong> ${entreprise}</p>` : ''}
-        ${poste ? `<p><strong>Poste :</strong> ${poste}</p>` : ''}
+        ${ville ? `<p><strong>Ville :</strong> ${ville}</p>` : ''}
         <p><strong>Note :</strong> ${'⭐'.repeat(note)}</p>
         <p><strong>Commentaire :</strong><br>${commentaire}</p>
         <p><a href="https://yannick-le-bec-couvreur.vercel.app/admin/avis">

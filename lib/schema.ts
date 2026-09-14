@@ -23,8 +23,7 @@ export const projetPhotos = pgTable('projet_photos', {
 export const avis = pgTable('avis', {
   id: serial('id').primaryKey(),
   nom: text('nom').notNull(),
-  entreprise: text('entreprise'),
-  poste: text('poste'),
+  ville: text('ville'),
   note: integer('note').notNull(),
   commentaire: text('commentaire').notNull(),
   valide: boolean('valide').default(false),

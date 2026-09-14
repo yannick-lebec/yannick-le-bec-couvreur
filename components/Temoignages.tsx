@@ -6,16 +6,15 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 type Avis = {
   id: number
   nom: string
-  entreprise?: string
-  poste?: string
+  ville?: string
   note: number
   commentaire: string
 }
 
 const FALLBACK: Avis[] = [
-  { id: -1, nom: 'Marc D., Chef de chantier', entreprise: 'Bâtiment Pro Essonne', note: 5, commentaire: "Yannick intervient sur nos chantiers depuis 3 ans. Toujours ponctuel, efficace, aucun besoin de le superviser. On le rappelle à chaque fois." },
-  { id: -2, nom: "Sophie L., Gérante", entreprise: "Rénov'Toit 91", note: 5, commentaire: "Qualité de travail irréprochable. Yannick maîtrise aussi bien les toitures traditionnelles que les matériaux modernes. Je le recommande sans hésiter." },
-  { id: -3, nom: 'Patrick M., Directeur travaux', entreprise: 'ConstrucGroup IDF', note: 5, commentaire: "Réactif, sérieux, et vraiment autonome. Exactement ce qu'on cherche pour nos chantiers en sous-traitance. Les délais sont toujours respectés." },
+  { id: -1, nom: 'Marie et Thomas G.', ville: 'Brétigny-sur-Orge (91)', note: 5, commentaire: "Yannick a refait notre toiture en ardoises en 3 jours. Travail impeccable, chantier propre, et il a pris le temps de nous expliquer chaque étape. On recommande les yeux fermés." },
+  { id: -2, nom: 'Philippe R.', ville: 'Évry-Courcouronnes (91)', note: 5, commentaire: "Intervention rapide pour une fuite au-dessus de la chambre. Problème trouvé et réglé en quelques heures. Tarif honnête et devis respecté à l'euro près." },
+  { id: -3, nom: 'Isabelle M.', ville: 'Massy (91)', note: 5, commentaire: "Démoussage et traitement hydrofuge de notre pavillon. Résultat vraiment visible, toiture comme neuve. Ponctuel, propre, et très professionnel." },
 ]
 
 function Stars({ note, interactive, onSelect }: { note: number; interactive?: boolean; onSelect?: (n: number) => void }) {
@@ -41,7 +40,7 @@ function Stars({ note, interactive, onSelect }: { note: number; interactive?: bo
 }
 
 function AvisModal({ onClose }: { onClose: () => void }) {
-  const [form, setForm] = useState({ nom: '', entreprise: '', poste: '', note: 0, commentaire: '' })
+  const [form, setForm] = useState({ nom: '', ville: '', note: 0, commentaire: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -102,18 +101,11 @@ function AvisModal({ onClose }: { onClose: () => void }) {
                   placeholder="Jean Dupont" />
               </div>
               <div>
-                <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">Entreprise</label>
-                <input name="entreprise" value={form.entreprise} onChange={handleChange}
+                <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">Ville</label>
+                <input name="ville" value={form.ville} onChange={handleChange}
                   className="w-full border border-gris-moyen px-3 py-2.5 text-sm focus:outline-none focus:border-rouge transition-colors"
-                  placeholder="Facultatif" />
+                  placeholder="Évry, Corbeil-Essonnes..." />
               </div>
-            </div>
-
-            <div>
-              <label className="block text-xs text-gray-500 uppercase tracking-widest mb-2">Poste occupé</label>
-              <input name="poste" value={form.poste} onChange={handleChange}
-                className="w-full border border-gris-moyen px-3 py-2.5 text-sm focus:outline-none focus:border-rouge transition-colors"
-                placeholder="Chef de chantier, Gérant..." />
             </div>
 
             <div>
@@ -187,8 +179,7 @@ export default function Temoignages() {
                 </p>
                 <div>
                   <div className="font-semibold text-white text-sm">{a.nom}</div>
-                  {a.entreprise && <div className="text-rouge text-xs tracking-wide mt-0.5">{a.entreprise}</div>}
-                  {a.poste && <div className="text-gray-500 text-xs mt-0.5">{a.poste}</div>}
+                  {a.ville && <div className="text-rouge text-xs tracking-wide mt-0.5">{a.ville}</div>}
                 </div>
               </div>
             ))}
