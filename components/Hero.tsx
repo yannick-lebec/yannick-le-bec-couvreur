@@ -8,10 +8,10 @@ export default function Hero() {
         src="/image-de-fond.png"
         alt=""
         fill
-        className="object-cover object-center opacity-25"
+        className="object-cover object-center opacity-50"
         priority
       />
-      <div className="absolute inset-0 bg-linear-to-r from-noir via-noir/85 to-noir/50" />
+      <div className="absolute inset-0 bg-linear-to-r from-noir/90 via-noir/55 to-noir/10" />
 
       {/* Red vertical stripe */}
       <div className="absolute right-0 top-0 bottom-0 w-2 bg-rouge" />
