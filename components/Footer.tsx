@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Footer() {
   return (
     <footer className="bg-noir border-t-2 border-rouge">
@@ -5,16 +7,17 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-rouge flex items-center justify-center">
-              <span className="font-bebas text-white text-lg tracking-widest">YLB</span>
+            <div className="bg-white px-2 py-1.5 shrink-0">
+              <Image
+                src="/logo.png"
+                alt="YLB Couverture"
+                width={160}
+                height={107}
+                className="h-12 w-auto"
+              />
             </div>
-            <div>
-              <div className="font-bebas text-white text-base tracking-widest">
-                YANNICK LE BEC
-              </div>
-              <div className="text-[10px] text-gray-500 tracking-wider uppercase">
-                Couvreur Indépendant · Essonne (91)
-              </div>
+            <div className="text-[10px] text-gray-500 tracking-wider uppercase">
+              Couvreur Indépendant · Essonne (91)
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 const points = [
@@ -61,19 +62,29 @@ export default function APropos() {
           <div className="w-16 h-1 bg-rouge" />
         </div>
 
-        {/* Text */}
-        <div className="grid md:grid-cols-2 gap-10 mb-16">
-          <p className="text-gray-600 text-base leading-relaxed">
-            Couvreur depuis 25 ans, formé aux Compagnons du Devoir, j&apos;ai
-            consacré toute ma carrière à la toiture. BEP Technique du Toit,
-            expérience en pose, rénovation, charpente et zinguerie sur tous
-            types de bâtiments.
-          </p>
-          <p className="text-gray-600 text-base leading-relaxed">
-            Aujourd&apos;hui artisan indépendant, j&apos;interviens directement
-            chez les particuliers en Essonne (91). Un seul interlocuteur du
-            devis à la réception des travaux.
-          </p>
+        {/* Photo + Text */}
+        <div className="grid md:grid-cols-[320px_1fr] gap-10 mb-16 items-start">
+          <div className="relative w-full aspect-3/4 border-b-4 border-rouge overflow-hidden">
+            <Image
+              src="/Photo-Avatar-Yannick.png"
+              alt="Yannick Le Bec, couvreur"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+          <div className="grid sm:grid-cols-2 gap-10">
+            <p className="text-gray-600 text-base leading-relaxed">
+              Couvreur depuis 25 ans, formé aux Compagnons du Devoir, j&apos;ai
+              consacré toute ma carrière à la toiture. BEP Technique du Toit,
+              expérience en pose, rénovation, charpente et zinguerie sur tous
+              types de bâtiments.
+            </p>
+            <p className="text-gray-600 text-base leading-relaxed">
+              Aujourd&apos;hui artisan indépendant, j&apos;interviens directement
+              chez les particuliers en Essonne (91). Un seul interlocuteur du
+              devis à la réception des travaux.
+            </p>
+          </div>
         </div>
 
         {/* Cards */}

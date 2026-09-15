@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 const navLinks = [
@@ -39,16 +40,15 @@ export default function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-3 group"
             >
-              <div className="w-10 h-10 bg-rouge flex items-center justify-center flex-shrink-0">
-                <span className="font-bebas text-white text-lg tracking-widest">YLB</span>
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="font-bebas text-white text-base tracking-widest">
-                  YANNICK LE BEC
-                </span>
-                <span className="text-[10px] text-gray-400 tracking-wider uppercase">
-                  Couvreur Indépendant
-                </span>
+              <div className="bg-white px-2 py-1.5 shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="YLB Couverture"
+                  width={160}
+                  height={107}
+                  className="h-11 sm:h-12 w-auto"
+                  priority
+                />
               </div>
             </button>
 
