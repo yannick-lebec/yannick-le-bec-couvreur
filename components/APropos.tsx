@@ -72,17 +72,40 @@ export default function APropos() {
               className="object-cover object-center"
             />
           </div>
-          <div className="grid sm:grid-cols-2 gap-10">
+
+          {/* Text */}
+          <div className="flex flex-col gap-6">
             <p className="text-gray-600 text-base leading-relaxed">
-              Couvreur depuis 25 ans, formé aux Compagnons du Devoir, j&apos;ai
-              consacré toute ma carrière à la toiture. BEP Technique du Toit,
-              expérience en pose, rénovation, charpente et zinguerie sur tous
-              types de bâtiments.
+              <strong className="font-semibold text-noir">
+                Couvreur depuis 25 ans, formé aux Compagnons du Devoir,
+              </strong>{' '}
+              j&apos;ai consacré toute ma carrière aux métiers de la toiture.
+              Titulaire d&apos;un BEP Technique du Toit, j&apos;ai acquis une
+              solide expérience en couverture, rénovation, charpente et
+              zinguerie, sur tous types de bâtiments.
             </p>
             <p className="text-gray-600 text-base leading-relaxed">
-              Aujourd&apos;hui artisan indépendant, j&apos;interviens directement
-              chez les particuliers en Essonne (91). Un seul interlocuteur du
-              devis à la réception des travaux.
+              Aujourd&apos;hui artisan indépendant, j&apos;interviens
+              directement auprès des particuliers en Essonne (91).
+            </p>
+            <p className="text-gray-600 text-base leading-relaxed">
+              <strong className="font-semibold text-noir">
+                Un seul interlocuteur du début à la fin : moi.
+              </strong>{' '}
+              Du premier rendez-vous à la réception des travaux, je réalise
+              personnellement votre chantier. Je ne mène pas plusieurs
+              chantiers en parallèle : lorsque j&apos;interviens chez vous,{' '}
+              <strong className="font-semibold text-noir">
+                votre chantier est ma priorité.
+              </strong>
+            </p>
+            <p className="text-gray-600 text-base leading-relaxed">
+              <strong className="font-semibold text-noir">
+                Chaque soir, le chantier est rangé, nettoyé et soigneusement
+                protégé et bâché,
+              </strong>{' '}
+              afin de sécuriser votre habitation jusqu&apos;à la reprise des
+              travaux.
             </p>
           </div>
         </div>
