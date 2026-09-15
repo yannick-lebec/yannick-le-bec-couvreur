@@ -2,40 +2,38 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-noir pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white pt-16">
       {/* Background photo, in transparency */}
       <Image
         src="/image-de-fond.png"
         alt=""
         fill
-        className="object-cover object-center opacity-50"
+        className="object-cover object-center opacity-90"
         priority
       />
-      <div className="absolute inset-0 bg-linear-to-r from-noir/90 via-noir/55 to-noir/10" />
-
-      {/* Red vertical stripe */}
+      {/* Orange vertical stripe */}
       <div className="absolute right-0 top-0 bottom-0 w-2 bg-rouge" />
 
       {/* Content, over the background */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="w-full max-w-lg">
+        <div className="w-full max-w-lg bg-white/10 backdrop-blur-sm p-6 sm:p-10">
           {/* Badge */}
-          <div className="animate-fade-in-up-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-8">
+          <div className="animate-fade-in-up-1 inline-flex items-center gap-2 bg-gris-clair border border-gris-moyen px-4 py-2 mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-medium text-gray-200 tracking-wide">
+            <span className="text-sm font-medium text-gray-700 tracking-wide">
               Disponible · Essonne (91)
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="animate-fade-in-up-2 font-bebas text-5xl sm:text-6xl lg:text-7xl text-white leading-none tracking-widest mb-6">
+          <h1 className="animate-fade-in-up-2 font-bebas text-5xl sm:text-6xl lg:text-7xl text-noir leading-none tracking-widest mb-6">
             COUVREUR<br />
             <span className="text-rouge">+25 ANS</span><br />
             D&apos;EXPÉRIENCE
           </h1>
 
           {/* Paragraph */}
-          <p className="animate-fade-in-up-3 text-gray-300 text-base sm:text-lg leading-relaxed mb-8 max-w-md">
+          <p className="animate-fade-in-up-3 text-noir text-base sm:text-lg leading-relaxed mb-8 max-w-md">
             Artisan couvreur en Essonne (91) — pose, rénovation, entretien,
             démoussage. Devis gratuit, intervention rapide.
           </p>
@@ -50,23 +48,23 @@ export default function Hero() {
             </a>
             <a
               href="#projets"
-              className="border-2 border-white text-white font-semibold px-8 py-3 text-center hover:bg-white hover:text-noir transition-all duration-200"
+              className="border-2 border-noir text-noir font-semibold px-8 py-3 text-center hover:bg-noir hover:text-white transition-all duration-200"
             >
               Voir mes réalisations
             </a>
           </div>
 
           {/* Stats */}
-          <div className="animate-fade-in-up-4 flex gap-8 pt-6 border-t border-white/20">
+          <div className="animate-fade-in-up-4 flex gap-8 pt-6 border-t border-gris-moyen">
             <div>
               <div className="font-bebas text-4xl text-rouge tracking-wider">+25</div>
-              <div className="text-xs text-gray-400 uppercase tracking-widest mt-1">
+              <div className="text-xs text-noir uppercase tracking-widest mt-1">
                 Ans d&apos;expérience
               </div>
             </div>
             <div>
               <div className="font-bebas text-4xl text-rouge tracking-wider">IDF</div>
-              <div className="text-xs text-gray-400 uppercase tracking-widest mt-1">
+              <div className="text-xs text-noir uppercase tracking-widest mt-1">
                 Zone d&apos;intervention
               </div>
             </div>
