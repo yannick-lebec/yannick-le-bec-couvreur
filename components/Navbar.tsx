@@ -40,16 +40,14 @@ export default function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-3 group"
             >
-              <div className="bg-white px-2 py-1.5 shrink-0">
-                <Image
-                  src="/logo.png"
-                  alt="YLB Couverture"
-                  width={160}
-                  height={107}
-                  className="h-11 sm:h-12 w-auto"
-                  priority
-                />
-              </div>
+              <Image
+                src="/logo-en-tête.png"
+                alt="YLB Couverture"
+                width={300}
+                height={100}
+                className="w-37.5 sm:w-50 h-auto shrink-0"
+                priority
+              />
             </button>
 
             {/* Desktop links */}

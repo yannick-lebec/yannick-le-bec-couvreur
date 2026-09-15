@@ -7,15 +7,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="bg-white px-2 py-1.5 shrink-0">
-              <Image
-                src="/logo.png"
-                alt="YLB Couverture"
-                width={160}
-                height={107}
-                className="h-12 w-auto"
-              />
-            </div>
+            <Image
+              src="/logo-en-tête.png"
+              alt="YLB Couverture"
+              width={300}
+              height={100}
+              className="w-37.5 sm:w-50 h-auto shrink-0"
+            />
             <div className="text-[10px] text-gray-500 tracking-wider uppercase">
               Couvreur Indépendant · Essonne (91)
             </div>

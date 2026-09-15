@@ -16,7 +16,7 @@ export default function Hero() {
 
       {/* Content, over the background */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="w-full max-w-lg bg-white/10 backdrop-blur-sm p-6 sm:p-10">
+        <div className="w-full max-w-lg backdrop-blur-xs p-6 sm:p-10">
           {/* Badge */}
           <div className="animate-fade-in-up-1 inline-flex items-center gap-2 bg-gris-clair border border-gris-moyen px-4 py-2 mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -58,13 +58,13 @@ export default function Hero() {
           <div className="animate-fade-in-up-4 flex gap-8 pt-6 border-t border-gris-moyen">
             <div>
               <div className="font-bebas text-4xl text-rouge tracking-wider">+25</div>
-              <div className="text-xs text-noir uppercase tracking-widest mt-1">
+              <div className="text-xs text-rouge uppercase tracking-widest mt-1">
                 Ans d&apos;expérience
               </div>
             </div>
             <div>
               <div className="font-bebas text-4xl text-rouge tracking-wider">IDF</div>
-              <div className="text-xs text-noir uppercase tracking-widest mt-1">
+              <div className="text-xs text-rouge uppercase tracking-widest mt-1">
                 Zone d&apos;intervention
               </div>
             </div>
