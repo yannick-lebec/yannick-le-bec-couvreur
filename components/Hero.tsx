@@ -20,7 +20,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="animate-fade-in-up-1 inline-flex items-center gap-2 bg-gris-clair border border-gris-moyen px-4 py-2 mb-8">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-medium text-gray-700 tracking-wide">
+            <span className="text-sm font-extrabold text-gray-700 tracking-wide">
               Disponible · Essonne (91)
             </span>
           </div>
@@ -33,10 +33,12 @@ export default function Hero() {
           </h1>
 
           {/* Paragraph */}
-          <p className="animate-fade-in-up-3 text-noir text-base sm:text-lg leading-relaxed mb-8 max-w-md">
-            Artisan couvreur en Essonne (91) — pose, rénovation, entretien,
-            démoussage. Devis gratuit, intervention rapide.
-          </p>
+          <div className="animate-fade-in-up-3 backdrop-blur-md bg-white/40 p-4 mb-8 max-w-md">
+            <p className="text-noir text-base sm:text-lg leading-relaxed">
+              Artisan couvreur en Essonne (91) — pose, rénovation, entretien,
+              démoussage. <span className="text-rouge">Devis gratuit</span>, intervention rapide.
+            </p>
+          </div>
 
           {/* Buttons */}
           <div className="animate-fade-in-up-4 flex flex-col sm:flex-row gap-4 mb-12">
