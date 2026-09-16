@@ -42,7 +42,7 @@ export default function Projets() {
         }`}
       >
         <div className="mb-14">
-          <h2 className="font-bebas text-5xl text-noir tracking-widest mb-3">MES PROJETS</h2>
+          <h2 className="font-bebas text-5xl text-noir tracking-widest mb-3">MES RÉALISATIONS</h2>
           <div className="w-16 h-1 bg-rouge" />
         </div>
 
@@ -54,7 +54,7 @@ export default function Projets() {
 
         {!loading && projets.length === 0 && (
           <div className="text-center py-16 text-texte-secondaire">
-            <div className="font-bebas text-3xl tracking-widest mb-2">Projets bientôt disponibles</div>
+            <div className="font-bebas text-3xl tracking-widest mb-2">Réalisations bientôt disponibles</div>
             <p className="text-sm">Les réalisations seront ajoutées prochainement.</p>
           </div>
         )}

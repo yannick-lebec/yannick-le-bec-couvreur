@@ -21,13 +21,18 @@ export default function Footer() {
 
           {/* Links */}
           <nav className="flex gap-6">
-            {['Services', 'Projets', 'Avis', 'Contact'].map((l) => (
+            {[
+              { label: 'Services', href: '#services' },
+              { label: 'Réalisations', href: '#projets' },
+              { label: 'Avis', href: '#avis' },
+              { label: 'Contact', href: '#contact' },
+            ].map((l) => (
               <a
-                key={l}
-                href={`#${l.toLowerCase()}`}
+                key={l.href}
+                href={l.href}
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </nav>
