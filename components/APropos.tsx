@@ -64,9 +64,9 @@ export default function APropos() {
 
         {/* Photo + Text */}
         <div className="grid md:grid-cols-[320px_1fr] gap-10 mb-16 items-start">
-          <div className="relative w-full aspect-3/4 border-b-4 border-rouge overflow-hidden">
+          <div className="relative w-full aspect-square border-b-4 border-rouge overflow-hidden">
             <Image
-              src="/Photo-Avatar-Yannick.png"
+              src="/Photo-yannick-le-bec.png"
               alt="Yannick Le Bec, couvreur"
               fill
               className="object-cover object-center"
