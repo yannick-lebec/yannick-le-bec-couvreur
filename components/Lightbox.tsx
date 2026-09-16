@@ -25,6 +25,8 @@ export default function Lightbox({
   const [origin, setOrigin] = useState('50% 50%')
   const imageWrapRef = useRef<HTMLDivElement>(null)
   const touchStartX = useRef<number | null>(null)
+  const pushedHistoryRef = useRef(false)
+  const pendingBackRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const resetZoom = useCallback(() => {
     setScale(1)
@@ -47,6 +49,43 @@ export default function Lightbox({
       document.body.style.overflow = ''
     }
   }, [onClose, prev, next])
+
+  // Piège la touche "retour" du mobile pour fermer la popup au lieu de quitter le site.
+  // Les refs (au lieu d'un simple flag local) survivent au double mount/cleanup
+  // du Strict Mode en dev, qui sinon déclenche un history.back() fantôme.
+  useEffect(() => {
+    if (pendingBackRef.current !== null) {
+      clearTimeout(pendingBackRef.current)
+      pendingBackRef.current = null
+    }
+
+    let poppedByBackButton = false
+
+    if (!pushedHistoryRef.current) {
+      window.history.pushState({ lightbox: true }, '')
+      pushedHistoryRef.current = true
+    }
+
+    const onPopState = () => {
+      poppedByBackButton = true
+      pushedHistoryRef.current = false
+      onClose()
+    }
+    window.addEventListener('popstate', onPopState)
+
+    return () => {
+      window.removeEventListener('popstate', onPopState)
+      if (!poppedByBackButton) {
+        pendingBackRef.current = setTimeout(() => {
+          pendingBackRef.current = null
+          if (pushedHistoryRef.current) {
+            pushedHistoryRef.current = false
+            window.history.back()
+          }
+        }, 0)
+      }
+    }
+  }, [onClose])
 
   // Wheel zoom — centré sur la position du curseur
   useEffect(() => {
