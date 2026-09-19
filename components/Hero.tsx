@@ -35,7 +35,7 @@ export default function Hero() {
           {/* Paragraph */}
           <div className="animate-fade-in-up-3 backdrop-blur-md bg-white/40 p-4 mb-8 max-w-md">
             <p className="text-noir text-base sm:text-lg leading-relaxed">
-              Artisan couvreur en Essonne (91) — pose, rénovation, entretien,
+              Artisan couvreur en Essonne (91) — rénovation, entretien,
               démoussage. <span className="text-rouge">Devis gratuit</span>, intervention rapide.
             </p>
           </div>
